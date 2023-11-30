@@ -1,9 +1,36 @@
 # Smart Building
+
 An academical projet to monitor and manage building facilities.
+
+## Installation
+
+You will need Python version 3.11 or higher.
+
+```shell
+pip install -r requirements.txt
+```
+
+## Usage
+
+Launch the KNX device simulator.
+
+```shell
+cd simulator-knx
+python run.py
+```
+
+Use `-i`
+
+Launch the main program.
+
+```shell
+python main.py
+```
 
 ## Projet overview
 
 This project deals with the development of a smart building software that provides a set of high-level functionalities (end-user functionalities) such as:
+
 1. lower the temperature of a room to a given threshold when it is empty,
 2. increase the temperature of a room to a given threshold when it is occupied,
 3. close the blinds when the humidity is high,
@@ -16,14 +43,21 @@ These functionalities can be activated automatically or manually. We assume that
 are deployed at a large scale. Multi-sensors provide temperature, light, humidity, and physical presence. Each room of the building has a sensor, a lamp, a blind, a radiator and a beacon (for location).
 
 Two different network protocols will be used:
+
 1. KNX: to monitor blinds and radiators.
 2. Z-Wave: to collect measures of temperature, light, humidity, presence, battery level. All these measures are provided by the multi-sensor.
 
 Concretely speaking, the goal of the project is to
+
 1. Set up the IoT infrastructure (perception and network layers)
 2. Develop a support layer that supports:
-	1. an authentication module (will be designed but not implemented),
-	2. a database of all IoT devices managed by the system
-	3. a security module to ensure that a given device is used only by “authorized” persons (access rights and location)
-	4. any other functions that might be useful/helpful.
+   1. an authentication module (will be designed but not implemented),
+   2. a database of all IoT devices managed by the system (AWS)
+   3. a security module to ensure that a given device is used only by “authorized” persons (access rights and location)
+   4. any other functions that might be useful/helpful.
 3. Develop an interface (end-user layer) that supports the high-level functionalities listed above
+
+## Libraries
+
+- [xknx](https://github.com/XKNX/xknx): KNX library for Python
+- [simulator-knx](https://github.com/isisdaude/simulator-knx): KNX device simulator
