@@ -25,6 +25,8 @@ A KNX network is available with the [knxd](https://github.com/knxd/knxd) daemon.
 
 ## Results
 
+The scenario for KNX devices are as follows: the blinds are closed when the light is too bright, and the radiators are turned on when the temperature is too low. Each hour, temperature and light state are checked and the scnearios are applied if needed.
+
 - Presentation of findings using figures, tables or screenshots
 - Raw data may be included in appendices
 
