@@ -23,9 +23,13 @@ A KNX network is available with the [knxd](https://github.com/knxd/knxd) daemon.
 
 ![Screenshot of the simulator](report-assets/simulator-knx.png)
 
+A DynamoDB database is used to store the data on AWS cloud.
+
+![Screenshot of database](report-assets/aws.png)
+
 ## Results
 
-The scenario for KNX devices are as follows: the blinds are closed when the light is too bright, and the radiators are turned on when the temperature is too low. Each hour, temperature and light state are checked and the scnearios are applied if needed.
+The scenario for KNX devices are as follows: the blinds are closed when the light is too bright, and the radiators are turned on when the temperature is too low. Each hour, temperature and light state are checked and the scnearios are applied if needed. The data is then sent to the database.
 
 - Presentation of findings using figures, tables or screenshots
 - Raw data may be included in appendices
