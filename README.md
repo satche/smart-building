@@ -61,3 +61,4 @@ Concretely speaking, the goal of the project is to
 
 - [xknx](https://github.com/XKNX/xknx): KNX library for Python
 - [simulator-knx](https://github.com/isisdaude/simulator-knx): KNX device simulator
+- [knxd](https://github.com/knxd/knxd): KNX daemon
