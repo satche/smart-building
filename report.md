@@ -7,35 +7,39 @@ _Thomas Robert, Emile Farine_
 
 ## Introduction
 
-The present report is the result of a project conducted in the context of the course _Internet of Things_ (IoT) at MSE formation, HES-SO. The goal of the project was to design and implement a smart building system, using the tools and techniques presented during the course. The goal is to be able to control IoT devices such as blinds, radiators, and lights and provide a user interface to overview their states.
+This report is the result of a project undertaken within the scope of the Internet of Things (IoT) course at MSE Formation, HES-SO. The project's objective was to design and implement a smart building system, utilizing the tools and techniques introduced during the course. The aim is to control IoT devices such as blinds, radiators, and lights, and to provide a user interface for monitoring their status.
 
-The objectives can be summarized in three steps:
+The objectives can be resume into three key steps:
 
-1. Set up the IoT infrastructure
-2. Develop a support layer
-3. Provide a front-end interface for the end-user
+- Establish the IoT infrastructure
+- Develop a support layer
+- Create a front-end interface for end-users
+
 
 ## Implementation
 
-One real IoT device is used for this experiment: a Z-Wave multi-sensor. This device provides temperature, light, humidity, and physical presence. A Raspberry Pi is used as a gateway.
+A single, real IoT device was employed for this experiment: a Z-Wave multi-sensor. This device measures temperature, light, humidity, and physical presence. A Raspberry Pi serves as the gateway.
 
-A KNX network is available with the [knxd](https://github.com/knxd/knxd) daemon. Since we don't have the phyiscal infrastructure to manipulate devices suchs as blinds and radiators, we add a [simulator-knx](https://github.com/isisdaude/simulator-knx). A python script will be used to change the state of the devices in the simulator and send the data to the network: we use [xknx](https://github.com/XKNX/xknx) as a library to simplify the commands.
+A KNX network is accessible via the [knxd](https://github.com/knxd/knxd) daemon. As we lack the physical infrastructure to manipulate devices such as blinds and radiators, we incorporated a [KNX simulator](https://github.com/isisdaude/simulator-knx). A Python script is utilized to alter the state of the devices in the simulator and transmit the data to the network, with the [xknx](https://github.com/XKNX/xknx) library simplifying the commands.
 
 ![Screenshot of the simulator](report-assets/simulator-knx.png)
 
-A DynamoDB database is used to store the data on AWS cloud.
+A DynamoDB database is employed to store the data on the AWS cloud.
 
 ![Screenshot of database](report-assets/aws.png)
 
+The following is an overview of the architecture. The scripts to control the devices are executed on a local machine, but they could also be run directly on the Raspberry Pi.
+
+![Architecture overview](report-assets/architecture.png)
+
 ## Results
 
-The scenario for KNX devices are as follows: the blinds are closed when the light is too bright, and the radiators are turned on when the temperature is too low. Each hour, temperature and light state are checked and the scnearios are applied if needed. The data is then sent to the database.
+The scenarios for the KNX devices are as follows: the blinds close when the light is excessively bright, and the radiators activate when the temperature drops too low. Every hour, the temperature and light status are checked, and the scenarios are implemented if necessary. The data is subsequently sent to the database.
 
-- Presentation of findings using figures, tables or screenshots
-- Raw data may be included in appendices
+We opted to use [Grafana](https://grafana.com) as the front-end system to present the data to the end-user. It functions as a dashboard for controlling the state of the devices
 
 ## Conclusion
 
-- Summary of key findings
-- Implications of the results
-- Recommendations.
+Despite challenges with network connectivity and the use of old libraries, this project successfully established an IoT infrastructure for a smart building system. We managed to simulate data and values, providing a comprehensive understanding of an IoT system's event chain.
+
+These results, although achieved under challenging conditions, demonstrate the potential of IoT in controlling and monitoring devices like blinds, radiators, and lights. The use of a DynamoDB database on the AWS cloud further underscores the system's scalability.
